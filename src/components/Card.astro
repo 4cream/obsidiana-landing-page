@@ -1,0 +1,57 @@
+---
+// interface Props {
+// 	title: string;
+// 	body: string;
+// 	href: string;
+// }
+
+// const { href, title, body } = Astro.props;
+---
+<style>
+	.card-container {
+		background-color: hsl(0deg 2.5% 15.69% / 60%);
+    	border: 1px solid rgb(232, 227, 227);
+    	border-radius: 2rem;
+    	max-width: 25rem;
+    	width: 100%;
+		padding: 2rem;
+		margin: 1rem;
+		position: relative;
+		/* align-content: center; */
+	}
+
+	.card-title {
+		font-size: 3rem;
+		margin: 0;
+		text-shadow: 1px 1px rgba(0,0,0,0.1);
+		text-wrap: balance;
+		/* margin-inline: center; */
+	}
+
+	.card-paragraph {
+		font-size: 1rem;
+		padding: 0.5rem 0 1rem;
+		margin: 0;
+		text-wrap: balance;
+	}
+
+	@media (width <= 768px) {
+		.card-title {
+			font-size: 2rem;
+		}
+	}
+
+</style>
+
+<article class="card-container">
+	<h1 class="card-title">Welcome</h1>
+	<p class="card-paragraph">
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis itaque soluta dicta quam aliquid perferendis molestiae sit aut et ipsam.
+	</p>
+	<slot />
+</article>
+
+<script>
+	import '../styles/global.css';
+</script>
+
