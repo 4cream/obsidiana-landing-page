@@ -1,5 +1,5 @@
 export type RequestBody = {
-    name: string;
+    nombre: string;
     email: string;
     phone: string;
   };

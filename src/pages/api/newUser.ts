@@ -1,11 +1,15 @@
 import type { APIRoute } from 'astro';
-import { turso } from "@/lib/tursoDb";
+import { turso } from "@/lib/tursoDb.ts";
+// import { turso } from "@/turso.ts";
 
 export const POST: APIRoute = async ({ request }) => {
-    const { name, email, phone } = await request.json();
+    console.log("Que sale en el request?", request);
+    
+    const { nombre, email, phone } = await request.json();
 
-    if (!name || !email || !phone) {
-        return new Response(JSON.stringify({ message: "Datos inválidos" }), {
+    if (!nombre || !email || !phone) {
+        console.log("Que llega al methodo POST?", nombre, email, phone);
+               return new Response(JSON.stringify({ message: "Datos inválidos" }), {
             status: 400,
             headers: { "Content-Type": "application/json" },
         });
@@ -15,8 +19,8 @@ export const POST: APIRoute = async ({ request }) => {
         console.log("Entramos al metodo POST");
         
         const result = await turso.execute({
-            sql: "INSERT INTO ProspectiveCustomers (name, email, phone) VALUES (?, ?, ?)",
-            args: [name, email, phone],
+            sql: "INSERT INTO ProspectiveCustomers (nombre, email, phone) VALUES (?, ?, ?)",
+            args: [nombre, email, phone],
         });
 
         if (result.rowsAffected === 1) {
