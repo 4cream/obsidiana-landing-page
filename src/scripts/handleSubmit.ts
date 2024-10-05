@@ -4,7 +4,6 @@ export async function handleSubmit(event: Event) {
     event.preventDefault();
     const emailInput = document.getElementById('kraken') as HTMLInputElement;
     const email = emailInput?.value;
-  console.log("Hay algo?", email);
   
     if (!email) {
       alert('Por favor, ingresa un correo electrónico válido.');

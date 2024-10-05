@@ -1,10 +1,5 @@
 ---
-// este object formentries retorna un objeto con los valores del formulario
-// const formData = Object.fromEntries(
-//     new FormData(event.target);
-// );
 
-// console.log(formData);
 ---
 
 <script>
@@ -13,12 +8,8 @@
         event.preventDefault();
         const formData = new FormData(event.target as HTMLFormElement);
         const data = Object.fromEntries(formData);
-        console.log("Data del formulario", data);
-        
-
+    
         try {
-            console.log("Entra al try");
-            
             const response = await fetch('/api/newUser', {
                 method: 'POST',
                 headers: {
@@ -36,7 +27,6 @@
                 alert(error.message);
             }
         } catch (error) {
-            console.error('Error:', error);
             alert('Ocurrió un error al enviar los datos.');
         }
     });
