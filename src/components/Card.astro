@@ -1,31 +1,28 @@
 ---
-// interface Props {
-// 	title: string;
-// 	body: string;
-// 	href: string;
-// }
 
-// const { href, title, body } = Astro.props;
 ---
+<script>
+	import '../styles/global.css';
+</script>
 <style>
 	.card-container {
-		background-color: hsl(0deg 2.5% 15.69% / 60%);
-    	border: 1px solid rgb(232, 227, 227);
-    	border-radius: 2rem;
-    	max-width: 25rem;
-    	width: 100%;
-		padding: 2rem;
-		margin: 1rem;
-		position: relative;
-		/* align-content: center; */
+		padding: 1rem;
+		margin: 0;
+		text-align: center;
+
+		@media (min-width:768px) {
+			padding: 2rem;
+			margin: 1rem;
+		}
 	}
 
-	.card-title {
+	.card-h1 {
 		font-size: 3rem;
-		margin: 0;
+		line-height: 1;
 		text-shadow: 1px 1px rgba(0,0,0,0.1);
 		text-wrap: balance;
-		/* margin-inline: center; */
+		margin: 0;
+		padding-bottom: 1rem;
 	}
 
 	.card-paragraph {
@@ -44,14 +41,14 @@
 </style>
 
 <article class="card-container">
-	<h1 class="card-title">Welcome</h1>
-	<p class="card-paragraph">
-		Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis itaque soluta dicta quam aliquid perferendis molestiae sit aut et ipsam.
+	<h1 class="card-h1 roboto-bold">
+		Get notified when we’re launching.
+	</h1>
+	<p class="card-paragraph roboto-regular">
+		Al ingresar tu correo electrónico, no solo estarás un paso más cerca de experimentar la energía positiva que nuestras manillas y jabones pueden ofrecerte, sino que también recibirás información privilegiada sobre eventos futuros, ofertas especiales y novedades en productos que resonarán con tu espíritu. ¡Conéctate con nosotros y comienza tu viaje hacia la armonía y el equilibrio hoy mismo!
 	</p>
 	<slot />
 </article>
 
-<script>
-	import '../styles/global.css';
-</script>
+
 
