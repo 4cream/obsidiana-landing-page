@@ -1,5 +1,5 @@
 ---
-
+import "../styles/cta-button.css";
 ---
 
 <script>
@@ -33,27 +33,30 @@
 </script>
 
 <form id="contactForm">
-    <div>
+    <div class="field-wrapper">
         <label for="kraken-email" class="label-field">Email</label>
         <input
             type="email"
             id="kraken-email"
             name="email"
-            placeholder="Cual es tu email? 📧"
+            placeholder="Enter your email 📧"
             class="input-field"
             required
         />
     </div>
 
-    <span class="state-message">Haz quedado registrado!!!</span> 🥳
-    <button type="submit">Save 💾</button>
+    <!-- <span class="state-message">Haz quedado registrado!!!</span> 🥳 -->
+    <button type="submit" class="shiny-cta">
+        <span>Get unlimited access</span>
+    </button>
 </form>
 
-<hr />
-
 <style>
+    .field-wrapper {
+        margin-bottom: 2rem;
+    }
     .label-field {
-        font-weight: bold;
+        visibility: hidden;
     }
 
     .input-field {
@@ -62,7 +65,7 @@
         min-height: 2.5rem;
         height: 100%;
         width: 100%;
-        border: 2px solid black;
+        border: 1px solid rgb(255, 255, 255);
         padding: 0.5rem 1rem;
         margin: 0.5rem 0;
         box-sizing: border-box;
