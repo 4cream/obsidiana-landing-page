@@ -1,0 +1,109 @@
+---
+
+---
+
+<script>
+    const form = document.querySelector("#contactForm");
+    form?.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const formData = new FormData(event.target as HTMLFormElement);
+        const data = Object.fromEntries(formData);
+    
+        try {
+            const response = await fetch('/api/newUser', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert(result.message);
+                (event.target as HTMLFormElement).reset();
+            } else {
+                const error = await response.json();
+                alert(error.message);
+            }
+        } catch (error) {
+            alert('Ocurrió un error al enviar los datos.');
+        }
+    });
+</script>
+
+<form id="contactForm">
+    <div>
+        <label for="kraken-email" class="label-field">Email</label>
+        <input
+            type="email"
+            id="kraken-email"
+            name="email"
+            placeholder="Cual es tu email? 📧"
+            class="input-field"
+            required
+        />
+    </div>
+
+    <span class="state-message">Haz quedado registrado!!!</span> 🥳
+    <button type="submit">Save 💾</button>
+</form>
+<!-- <button form="contact-for" type="submit">Save 💾</button> -->
+
+<hr />
+
+<style>
+    .label-field {
+        font-weight: bold;
+    }
+
+    .input-field {
+        color: #290b0b;
+        border-radius: 0.5rem;
+        min-height: 2.5rem;
+        height: 100%;
+        width: 100%;
+        border: 2px solid black;
+        padding: 0.5rem 1rem;
+        margin: 0.5rem 0;
+        box-sizing: border-box;
+        font-size: 1.3rem;
+        position: relative;
+
+        &::before {
+            content: "";
+            background: linear-gradient(269deg, #db3fc8, transparent);
+            width: 100px;
+            height: 100px;
+            offset-path: border-box;
+            offset-anchor: 100% 50%;
+            animation: trail 6s infinite linear;
+            position: absolute;
+        }
+    }
+
+    .state-message {
+        font-style: italic;
+        /* margin-inline: center; */
+    }
+
+    @keyframes trail {
+        to {
+            offset-distance: 100%;
+        }
+    }
+
+    label:has(:focus:invalid) {
+        color: red;
+    }
+    label:has(:focus:valid) {
+        color: green;
+    }
+
+    label:has(:focus-visible:invalid) {
+        outline-color: pink;
+    }
+    label:has(:focus-visible:valid) {
+        outline-color: green;
+    }
+</style>
