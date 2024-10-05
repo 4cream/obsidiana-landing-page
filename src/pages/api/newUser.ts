@@ -5,10 +5,10 @@ import { turso } from "@/lib/tursoDb.ts";
 export const POST: APIRoute = async ({ request }) => {
     console.log("Que sale en el request?", request);
     
-    const { nombre, email, phone } = await request.json();
+    const { email } = await request.json();
 
-    if (!nombre || !email || !phone) {
-        console.log("Que llega al methodo POST?", nombre, email, phone);
+    if (!email) {
+        console.log("Que llega al methodo POST?", email);
                return new Response(JSON.stringify({ message: "Datos inválidos" }), {
             status: 400,
             headers: { "Content-Type": "application/json" },
@@ -19,8 +19,8 @@ export const POST: APIRoute = async ({ request }) => {
         console.log("Entramos al metodo POST");
         
         const result = await turso.execute({
-            sql: "INSERT INTO ProspectiveCustomers (nombre, email, phone) VALUES (?, ?, ?)",
-            args: [nombre, email, phone],
+            sql: "INSERT INTO customers (email) VALUES (?)",
+            args: [email],
         });
 
         if (result.rowsAffected === 1) {
