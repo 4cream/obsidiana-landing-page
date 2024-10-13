@@ -7,5 +7,6 @@ import tailwind from '@astrojs/tailwind';
 export default defineConfig({
   output: 'server',
   adapter: netlify(),
-  integrations: [tailwind()]
+  integrations: [tailwind()],
+  site: "https://bright-cheesecake-1e37b2.netlify.app"
 });
